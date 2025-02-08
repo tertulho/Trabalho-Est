@@ -31,7 +31,7 @@ typedef struct {
 
 //FUNCOES DO MAIN//
 void inserir_paciente(BDPaciente *bd);
-/*void consultar_paciente(BDPaciente *bd);*/
+void consultar_paciente(BDPaciente *bd);
 void atualizar_paciente(BDPaciente *bd);
 void remover_paciente(BDPaciente *bd);
 void imprimir_pacientes(BDPaciente *bd);
@@ -46,4 +46,5 @@ Paciente* buscar_paciente_por_nome(BDPaciente *bd, const char *nome);
 Paciente *newPaciente(char nome[], char cpf[], int idade, int id, char data_cadastro[]);
 BDPaciente *ListaBD_create();
 //FUNCOES AUXILIARES//
+
 #endif
