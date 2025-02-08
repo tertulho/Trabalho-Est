@@ -18,9 +18,9 @@ int main() {
         scanf(" %c", &opcao); 
         
         switch (opcao) {
-            /*case '1':
-                consultar_paciente(bd); MUDAAAAAR
-                break;*/
+            case '1':
+                consultar_paciente(bd);
+                break;
             case '2':
                 atualizar_paciente(bd);
                 break;
