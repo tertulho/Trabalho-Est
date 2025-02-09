@@ -15,7 +15,7 @@ SRCS = main_trab_est.c paciente_func.c
 OBJS = $(SRCS:.c=.o)
 
 # Executable name
-TARGET = sistema_pacientes
+TARGET = programas_c
 
 # Phony targets
 .PHONY: all compile run clean
@@ -26,9 +26,9 @@ all: compile run
 # Explicit compile target (produces the target program)
 compile: $(TARGET)
 
-# Run the executable
+# Run the executable  ; valgrind --leak-check=full antes do ./target para analizar a memoria usada -> necessario instalacao X so isso ja vale uns 40 pontos hein :)
 run: $(TARGET)
-	./$(TARGET)
+	./$(TARGET) 
 
 # Clean up
 clean:
@@ -38,6 +38,6 @@ clean:
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Link object files to create the executable
+# Link object files to create the executables
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
