@@ -12,15 +12,15 @@ int main() {
     printf("Bem-vindo ao sistema HealthSys!\n");
     
     do {
-        printf("%s\n", menu);
+        printf(" %s\n", menu);
         printf("////////////////////////////\n");
         printf("Escolha uma opção: ");
         scanf(" %c", &opcao); 
         
         switch (opcao) {
-            case '1':
-                consultar_paciente(bd);
-                break;
+            /*case '1':
+                consultar_paciente(bd); MUDAAAAAR
+                break;*/
             case '2':
                 atualizar_paciente(bd);
                 break;
@@ -46,3 +46,4 @@ int main() {
     free(bd);
     return 0;
 }
+
