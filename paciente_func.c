@@ -1,4 +1,3 @@
-
 #include "paciente_func.h"
 
 // cria um novo paciente
@@ -47,7 +46,7 @@ void inserir_paciente(BDPaciente *bd) {
 
     while (nome[fds]!= '\n')
     {
-        fds++; // esse loop tem a funcionalidade de retirar um \n indevido presente na string coletada acima ; extremamente necessario para a execucao
+        fds++;
     }
     nome[fds] = '\0' ;
 
@@ -109,29 +108,74 @@ Paciente* buscar_paciente_por_nome(BDPaciente *bd, const char *nome) {
 //atualiza algum usuario ja existente
 void atualizar_paciente(BDPaciente *bd) {
     int id;
-    printf("Digite o ID do paciente a ser atualizado: ");
+    printf("\nDigite o ID do paciente a ser atualizado: ");
     scanf("%d", &id);//pede id do usuario a ser atualizado
 
     ListNode *atual = bd->first; //começa a busca a partir do primeiro nó
     while (atual) { //percorre enquanto tiver nós
         if (atual->info->id == id) { //verifica se od id atual é o procurado
-            printf("Digite o novo CPF, Nome, Idade e Data_Cadastro (ou '-' para manter o valor atual):\n");
-            char cpf[15], nome[100], data[50];
-            int idade;
-            scanf(" %[^\n] %[^\n] %d %[^\n]", cpf, nome, &idade, data); //le os novos valores de dados
+            //printf("Digite o novo CPF, Nome, Idade e Data_Cadastro (ou '-' para manter o valor atual):\n");
+            char cpf[15], nome[100], data[11], opcao;
+            int idade, fds = 0;
+            //scanf(" %[^\n] %[^\n] %d %[^\n]", cpf, nome, &idade, data); //le os novos valores de dados
             
-            //atualiza os campos levando em consideração o "-"
-            if (strcmp(cpf, "-") != 0) strcpy(atual->info->cpf, cpf);
-            if (strcmp(nome, "-") != 0) strcpy(atual->info->nome, nome);
-            if (idade != -1) atual->info->idade = idade;
-            if (strcmp(data, "-") != 0) strcpy(atual->info->data_cadastro, data);
+            while(1){
+                printf("\nEscolha uma das letra abaixo para modificar um dado \n");
+                printf("n -> para atualizar o nome \ni -> para atualizar a idade do paciente \nc -> para atualizar o cpf \nd -> para atualizar a data de cadastro \nQ -> para finalizar a alteração dos dados \nopção : ");
+                scanf(" %c", &opcao);
+                
+                switch(opcao){
+                    case('n'):
+                    printf("digite o novo nome : ");
+                    getc(stdin);
+                    fgets( nome , 100, stdin);
 
-            printf("Paciente atualizado com sucesso!\n");
-            return;
+                    while (nome[fds]!= '\n')
+                    {
+                        fds++;
+                    }
+                    nome[fds] = '\0' ;
+                    strcpy(atual->info->nome, nome);
+                    break;
+
+                    case('c'):
+                    printf("digite o novo cpf : ");
+                    scanf(" %s" , cpf);
+                    strcpy(atual->info->cpf, cpf);
+                    break;
+
+                    case('d'):
+                    printf("Digite a data de cadastro (AAAA-MM-DD) : ");
+                    scanf(" %s", data);
+                    strcpy(atual->info->data_cadastro, data);
+                    break;
+                    
+                    case('i'):
+                    printf("Digite a nova idade do paciente : ");
+                    scanf(" %d" , &idade);
+                    atual->info->idade = idade;
+                    break;
+
+                    case('Q'):
+                    printf("dados atualizados com sucesso!\n");
+                    return;
+                }
+
+            }
+
+            //atualiza os campos levando em consideração o "-"
+            //if (strcmp(cpf, "-") != 0) strcpy(atual->info->cpf, cpf);
+            //if (strcmp(nome, "-") != 0) strcpy(atual->info->nome, nome);
+            //if (idade != -1) atual->info->idade = idade;
+            //if (strcmp(data, "-") != 0) strcpy(atual->info->data_cadastro, data);
+
+            //printf("Paciente atualizado com sucesso!\n");
+            //return;
         }
         atual = atual->next; //avança próximo nó
     }
     printf("Paciente não encontrado.\n");
+    return;
 }
 
 void remover_paciente(BDPaciente *bd) {
