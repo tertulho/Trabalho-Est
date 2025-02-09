@@ -47,7 +47,7 @@ void inserir_paciente(BDPaciente *bd) {
 
     while (nome[fds]!= '\n')
     {
-        fds++;
+        fds++; // esse loop tem a funcionalidade de retirar um \n indevido presente na string coletada acima ; extremamente necessario para a execussao
     }
     nome[fds] = '\0' ;
 
