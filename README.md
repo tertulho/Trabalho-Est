@@ -48,6 +48,7 @@ Ao executar o programa, o banco de dados do arquivo csv é carregado e o usuári
 1. Consultar paciente: A funcionalidade permite buscar as informações de um paciente utilizando Nome ou CPF.
 
 **A saída do programa para consulta segue o padrão a seguir:**
+```
 Escolha o critério de busca:
 1. Buscar por CPF
 2. Buscar por Nome
@@ -63,10 +64,13 @@ Paciente encontrado:
   Data de Cadastro: 2003-02-20
 
 Total de pacientes encontrados: 1
+```
+---
 
 2. Atualizar paciente: A funcionalidade de atualização permite modificar os dados de um paciente existente no sistema.
 
 **A saída do programa para atualizar o paciente segue o padrão a seguir:**
+```
 Digite o ID do paciente a ser atualizado: 4
 
 Escolha uma das letras abaixo para modificar um dado:
@@ -76,10 +80,13 @@ c -> para atualizar o cpf
 d -> para atualizar a data de cadastro
 Q -> para finalizar a alteração dos dados
 
+```
+---
+
 3. Remover paciente: A funcionalidade de remoção permite excluir um paciente existente no sistema de forma definitiva.
 
 **A saída do programa para excluir o paciente segue o padrão a seguir:**
-
+```
 Digite o ID do paciente a ser removido: 
 4
 
@@ -88,11 +95,13 @@ ID      CPF             Nome            Idade   Data_Cadastro
 4       65465465465     Paixão  36      2024-01-24
 S
 Paciente removido com sucesso!
+```
+---
 
 4. Inserir paciente: A funcionalidade de inserção permite adicionar um novo paciente ao sistema.
 
 **A saída do programa para inserir o paciente segue o padrão a seguir:**
-
+```
 Digite o CPF, Nome, Idade e Data_Cadastro:
 65465465465 
 Paixão
@@ -104,11 +113,13 @@ ID      CPF             Nome            Idade   Data_Cadastro
 23      65465465465     Paixão  36      2024-01-24
 S
 Paciente inserido com sucesso!
+```
+---
 
 5. Imprimir lista de pacientes: A funcionalidade de impressão de lista permite exibir todos os registros de pacientes armazenados no sistema.
 
 **A saída do programa para imprimir a lista de pacientes segue o padrão a seguir:**
-
+```
 ID | CPF | Nome | Idade | Data Cadastro
 ------------------------------------------
 23 | 65465465465 | Paixão | 36 | 2024-01-24
@@ -116,5 +127,7 @@ ID | CPF | Nome | Idade | Data Cadastro
 20 | 12345678910 | pedro | 12 | 2003-02-20
 19 | 12345678901 | Jo├úo Silva | 30 | 2024-02-07
 18 | 98765432100 | Maria Oliveira | 25 | 2024-02-06
+```
+---
 
 6. Sair: A funcionalidade encerra o funcionamento do programa atualizando o banco de dados.
