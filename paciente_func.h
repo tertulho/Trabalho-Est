@@ -41,10 +41,9 @@ void salvar_banco(BDPaciente *bd, const char *nomedoarquivo);
 //FUNCOES DO MAIN//
 
 //FUNCOES AUXILIARES//
-Paciente* buscar_paciente_por_cpf(BDPaciente *bd, const char *cpf);
-Paciente* buscar_paciente_por_nome(BDPaciente *bd, const char *nome);
+int buscar_paciente_por_cpf(BDPaciente *bd, const char *cpf);
+int buscar_paciente_por_nome(BDPaciente *bd, const char *nome , const int tamanho);
 Paciente *newPaciente(char nome[], char cpf[], int idade, int id, char data_cadastro[]);
 BDPaciente *ListaBD_create();
 //FUNCOES AUXILIARES//
-
 #endif
