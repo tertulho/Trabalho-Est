@@ -30,6 +30,59 @@ BDPaciente *ListaBD_create() {
     return lista; // retorna o ponteiro para o banco de dados
 }
 
+void consultar_paciente(BDPaciente *bd){
+    
+    char opcao , cpf[14] , nome[100];
+    int resposta = 0 , fds = 0; //indica sucesso ou falha na busca
+    
+    printf("Escolha uma das opcoes : \n c -> consultar buscando pelo cpf \n n -> buscar usando o nome \noutra entrada retorna ao menu inicial \n");
+
+    scanf(" %s" , &opcao);
+    
+    
+    switch (opcao)
+    {
+    case ('c'):
+        printf("digite o cpf desejado : ");
+        scanf(" %s" , cpf);
+        resposta = buscar_paciente_por_cpf(bd, cpf);
+        if (resposta==0)
+        {
+            printf("Erro na busca, paciente não encontrado\n");
+            return;
+            break;
+        }
+        
+        break;
+
+    case('n'):
+
+        printf("digite o nome desejado : ");
+        getc(stdin); // recebe \n digitado pelo teclado
+        fgets( nome , 100, stdin); // recebe a string digitada
+
+        while (nome[fds]!= '\n')
+        {
+            fds++; // indica \n na string 
+        }
+        nome[fds] = '\0' ;  // retira \n da string
+
+        
+        resposta = buscar_paciente_por_nome(bd, nome, fds -1); // buscando nome
+        if (resposta == 0) 
+            printf("Erro na busca, nenhum paciente encontrado \n");
+        
+        return;
+        break;
+    default:
+        break;
+    }
+    
+    
+    return;
+}
+
+
 // insere um novo paciente no banco de dados
 void inserir_paciente(BDPaciente *bd) {
     // declara variáveis para armazenar os dados
@@ -83,26 +136,52 @@ void imprimir_pacientes(BDPaciente *bd) {
     printf("\n\n");
 }
 
-Paciente* buscar_paciente_por_cpf(BDPaciente *bd, const char *cpf) {
+int buscar_paciente_por_cpf(BDPaciente *bd, const char *cpf) {
     ListNode *atual = bd->first;
+    int cont = 0; // conta os cadastros encontrados
+
+    printf("\nID | CPF | Nome | Idade | Data Cadastro\n"); // imprime cabeçalho
+
     while (atual) {
         if (strcmp(atual->info->cpf, cpf) == 0) {
-            return atual->info;
+            printf("%d | %s | %s | %d | %s\n", atual->info->id, atual->info->cpf, atual->info->nome, atual->info->idade, atual->info->data_cadastro); // imprime cadastros encontrados
+            cont++;
+            
         }
         atual = atual->next;
     }
-    return NULL;
+    return cont;
+
 }
 
-Paciente* buscar_paciente_por_nome(BDPaciente *bd, const char *nome) {
+int buscar_paciente_por_nome(BDPaciente *bd, const char *nome , const int tamanho) {
     ListNode *atual = bd->first;
+
+    printf("\nID | CPF | Nome | Idade | Data Cadastro\n"); // imprime cabeçalho
+    
+    int cont=0 , i = 0; //verifica quantidade certa de igualdade entre as strings
+    int achado = 0;
+
     while (atual) {
-        if (strcmp(atual->info->nome, nome) == 0) {
-            return atual->info;
+        while(atual->info->nome[i]!='\0'){
+
+            if (atual->info->nome[i] == nome[cont]){
+                cont++;
+                if(cont == tamanho){
+                    printf("%d | %s | %s | %d | %s\n", atual->info->id, atual->info->cpf, atual->info->nome, atual->info->idade, atual->info->data_cadastro); // imprime cadastros encontrados 
+                    achado++;
+                }
+            }else{
+                cont = 0;
+            }
+            i++;
+            
         }
+        cont = 0;
+        i = 0;
         atual = atual->next;
     }
-    return NULL;
+    return achado;
 }
 
 //atualiza algum usuario ja existente
