@@ -165,8 +165,8 @@ int buscar_paciente_por_nome(BDPaciente *bd, const char *nome , const int tamanh
     while (atual) {
         // percorre o nome do paciente
         while(atual->info->nome[i]!='\0'){
-            // verifica a igualdade sequencial dos caracteres
-            if (atual->info->nome[i] == nome[cont]){
+            // verifica a igualdade sequencial dos caracteres ; a presença dos ||(ou logico) garante que a letra seja reconhecida mesmo que seja uma minuscula e outra maiuscual
+            if (atual->info->nome[i] == nome[cont] || atual->info->nome[i] == toupper(nome[cont]) || tolower(atual->info->nome[i]) == nome[cont] || toupper(atual->info->nome[i]) == nome[cont] ){
                 cont++;
                 // verifica se a string desejada esta contida totalmente
                 if(cont == tamanho){
