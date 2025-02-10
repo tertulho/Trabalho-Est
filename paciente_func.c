@@ -68,7 +68,7 @@ void consultar_paciente(BDPaciente *bd){
         nome[fds] = '\0' ;  // retira \n da string
 
         
-        resposta = buscar_paciente_por_nome(bd, nome, fds -1); // buscando nome
+        resposta = buscar_paciente_por_nome(bd, nome, strlen(nome); // buscando nome
         if (resposta == 0) 
             printf("Erro na busca, nenhum paciente encontrado \n");
         
@@ -163,13 +163,16 @@ int buscar_paciente_por_nome(BDPaciente *bd, const char *nome , const int tamanh
     int achado = 0;
 
     while (atual) {
+        // percorre o nome do paciente
         while(atual->info->nome[i]!='\0'){
-
+            // verifica a igualdade sequencial dos caracteres
             if (atual->info->nome[i] == nome[cont]){
                 cont++;
+                // verifica se a string desejada esta contida totalmente
                 if(cont == tamanho){
                     printf("%d | %s | %s | %d | %s\n", atual->info->id, atual->info->cpf, atual->info->nome, atual->info->idade, atual->info->data_cadastro); // imprime cadastros encontrados 
                     achado++;
+                    break;
                 }
             }else{
                 cont = 0;
@@ -177,7 +180,7 @@ int buscar_paciente_por_nome(BDPaciente *bd, const char *nome , const int tamanh
             i++;
             
         }
-        cont = 0;
+        cont = 0; // zerando contadores para verificação de um novo nome
         i = 0;
         atual = atual->next;
     }
@@ -242,14 +245,7 @@ void atualizar_paciente(BDPaciente *bd) {
 
             }
 
-            //atualiza os campos levando em consideração o "-"
-            //if (strcmp(cpf, "-") != 0) strcpy(atual->info->cpf, cpf);
-            //if (strcmp(nome, "-") != 0) strcpy(atual->info->nome, nome);
-            //if (idade != -1) atual->info->idade = idade;
-            //if (strcmp(data, "-") != 0) strcpy(atual->info->data_cadastro, data);
-
-            //printf("Paciente atualizado com sucesso!\n");
-            //return;
+           
         }
         atual = atual->next; //avança próximo nó
     }
