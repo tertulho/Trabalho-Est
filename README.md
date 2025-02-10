@@ -49,21 +49,15 @@ Ao executar o programa, o banco de dados do arquivo csv é carregado e o usuári
 
 **A saída do programa para consulta segue o padrão a seguir:**
 ```
-Escolha o critério de busca:
-1. Buscar por CPF
-2. Buscar por Nome
-3. Voltar ao menu principal
-Opção: 2
-Digite o nome do paciente: pedro
+Escolha uma das opcoes : 
+ c -> consultar buscando pelo cpf
+ n -> buscar usando o nome
+outra entrada retorna ao menu inicial
+n
+digite o nome desejado : pedro
 
-Paciente encontrado:
-  ID: 20
-  CPF: 12345678910
-  Nome: pedro
-  Idade: 12
-  Data de Cadastro: 2003-02-20
-
-Total de pacientes encontrados: 1
+ID | CPF | Nome | Idade | Data Cadastro
+20 | 12345678910 | pedro | 12 | 2003-02-20
 ```
 ---
 
