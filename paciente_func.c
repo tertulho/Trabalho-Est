@@ -68,7 +68,7 @@ void consultar_paciente(BDPaciente *bd){
         nome[fds] = '\0' ;  // retira \n da string
 
         
-        resposta = buscar_paciente_por_nome(bd, nome, strlen(nome); // buscando nome
+        resposta = buscar_paciente_por_nome(bd, nome, strlen(nome)); // buscando nome
         if (resposta == 0) 
             printf("Erro na busca, nenhum paciente encontrado \n");
         
