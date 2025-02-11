@@ -1,6 +1,7 @@
 #ifndef PACIENTE_FUNC_H
 #define PACIENTE_FUNC_H
 
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
